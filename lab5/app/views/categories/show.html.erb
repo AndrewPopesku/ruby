@@ -1,0 +1,49 @@
+<% content_for :title, "Category: #{@category.name}" %>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1>Category: <%= @category.name %></h1>
+  <div>
+    <%= link_to "Edit", edit_category_path(@category), class: "btn btn-outline-primary" %>
+    <%= link_to "Back to Categories", categories_path, class: "btn btn-outline-secondary" %>
+  </div>
+</div>
+
+<div class="card mb-4">
+  <div class="card-header">
+    <h5 class="mb-0">Associated Expenses</h5>
+  </div>
+  <div class="card-body">
+    <% if @category.expenses.any? %>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @category.expenses.order(date: :desc).each do |expense| %>
+              <tr>
+                <td><%= expense.description %></td>
+                <td><%= number_to_currency(expense.amount) %></td>
+                <td><%= expense.date.strftime('%Y-%m-%d') %></td>
+                <td>
+                  <%= link_to "View", expense_path(expense), class: "btn btn-sm btn-outline-primary" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <p class="text-muted">No expenses associated with this category.</p>
+    <% end %>
+  </div>
+</div>
+
+<div class="d-grid gap-2 d-md-flex justify-content-md-end">
+  <%= button_to "Delete Category", category_path(@category), method: :delete, form: { data: { turbo_confirm: "Are you sure you want to delete this category?" } }, class: "btn btn-danger" %>
+</div>

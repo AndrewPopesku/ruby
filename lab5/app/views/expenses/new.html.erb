@@ -1,0 +1,15 @@
+<% content_for :title, "New Expense" %>
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <h1>New Expense</h1>
+  <%= link_to "Back to Expenses", expenses_path, class: "btn btn-outline-secondary" %>
+</div>
+
+<div class="card">
+  <div class="card-header">
+    <h5 class="card-title mb-0">Expense Details</h5>
+  </div>
+  <div class="card-body">
+    <%= render 'form', expense: @expense %>
+  </div>
+</div>

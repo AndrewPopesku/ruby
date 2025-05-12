@@ -1,0 +1,24 @@
+{
+  "Groceries": {
+    "amount": 275.75,
+    "date": "2023-05-15",
+    "categories": [
+      "Food",
+      "Supermarket"
+    ],
+    "payment_methods": [
+      "Cash"
+    ]
+  },
+  "Cinema": {
+    "amount": 150.0,
+    "date": "2023-05-18",
+    "categories": [
+      "Entertainment",
+      "Leisure"
+    ],
+    "payment_methods": [
+      "Debit card"
+    ]
+  }
+}
